@@ -127,6 +127,3 @@ Verify that the `oc` CLI is installed correctly
     rosa verify openshift-client
 
 We have now successfully set up our account and environment and are ready to deploy our cluster in the next step.
-
-*[ROSA]: Red Hat OpenShift Service on AWS
-*[STS]: AWS Secure Token Service
