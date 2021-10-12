@@ -131,10 +131,3 @@ Run the following to create the OIDC provider:
         rosa logs install --cluster <cluster_name> --watch
 
 1. Once the state has changed to “Ready” your cluster is now installed.  
-
-## Obtain the Console URL
-Please wait around 30-40 minutes for the cluster to provision AWS resources and install the OpenShift cluster. Have a tea or coffee, come back later. Once it is done, get the console URL by running:
-
-    rosa describe cluster -c <cluster-name> | grep Console
-
-The cluster has now been successfully deployed.
