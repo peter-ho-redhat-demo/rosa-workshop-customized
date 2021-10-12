@@ -1,5 +1,5 @@
 # Project Information
-site_name: Red Hat OpenShift Service on AWS
+site_name: Red Hat OpenShift Service on AWS (ROSA)
 site_description: A guided workshop that ranges from application deployment to cluster configuration for ROSA clusters.
 site_author: Red Hat
 
