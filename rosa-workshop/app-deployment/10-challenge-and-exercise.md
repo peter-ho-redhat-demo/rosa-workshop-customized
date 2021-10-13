@@ -41,6 +41,5 @@ In case you are not able to do it, or encounter any issues or questions, you can
         - Mount path: `/opt/app-root/src/media`
 
 6. Configure environment variable in the Python app to change the website's appreance:
-    - Set a variable with a key=`BLOG_BANNER_COLOR` and with a value=`#db212e`
     - Set a variable with a key=`BLOG_SITE_NAME` and with a value=`ROSA Workshop Rocks!`
     - Visit the Python app again. You should be seeing a black banner now, with a new title.
