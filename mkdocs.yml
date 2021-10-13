@@ -5,34 +5,29 @@ site_author: Red Hat
 
 # Nav Menu Definition
 nav:
-  - Home: index.md
-  - Getting started with ROSA:
-    - Setup: 'rosa/1-account_setup.md'
-    - Deploy the cluster: 'rosa/2-deploy.md'
-    - Create an admin user: 'rosa/3-create_initial_admin.md'
-    - Setup an IdP: 'rosa/4-setup_idp.md'
-    - Granting admin rights: 'rosa/5-grant_admin.md'
-    - Accessing your cluster: 'rosa/6-access_cluster.md'
-    - Managing worker nodes: 'rosa/7-managing_nodes.md'
-    - Autoscaling: 'rosa/8-autoscaling.md'
-    - Upgrade the cluster: 'rosa/9-upgrade.md'
-    - Delete the cluster: 'rosa/12-delete_cluster.md'
-    - Obtaining support: 'rosa/13-obtaining_support.md'
-  - Deploy the application:
-    - Introduction: 'ostoy/lab_intro.md'
-    - Prerequisites: 'ostoy/1-prereqs.md'
-    - Lab Overview: 'ostoy/3-lab_overview.md'
-    - Deployment: 'ostoy/4-deployment.md'
-    - Health Check: 'ostoy/5-healthcheck.md'
-    - Storage: 'ostoy/6-storage.md'
-    - ConfigMaps, Secrets, Env Var: 'ostoy/7-confsecenv.md'
-    - Networking: 'ostoy/8-networking.md'
-    - Scaling: 'ostoy/12-scaling.md'
-    - Logging: 'ostoy/9-logging.md'
-    - S2I Deployments: 'ostoy/10-deployment_s2i.md'
-    - S2I Webhooks for CICD: 'ostoy/11-cicd_s2i.md'
-  - OpenShift Concepts: 'ostoy/2-concepts.md'
-  - Feedback: 'feedback.md'
+  - Part 1 - ROSA cluster deployment:
+    - Setup: 'rosa-deployment/1-account_setup.md'
+    - Deploy the cluster: 'rosa-deployment/2-deploy.md'
+    - Create an admin user: 'rosa-deployment/3-create_initial_admin.md'
+    - Setup an IdP: 'rosa-deployment/4-setup_idp.md'
+    - Granting admin rights: 'rosa-deployment/5-grant_admin.md'
+    - Accessing your cluster: 'rosa-deployment/6-access_cluster.md'
+    - Managing worker nodes: 'rosa-deployment/7-managing_nodes.md'
+    - Autoscaling: 'rosa-deployment/8-autoscaling.md'
+    - Upgrade the cluster: 'rosa-deployment/9-upgrade.md'
+    - Delete the cluster: 'rosa-deployment/12-delete_cluster.md'
+    - Obtaining support: 'rosa-deployment/13-obtaining_support.md'
+  - Part 2 - Application deployment:
+    - Deploying hello world app: 'app-deployment/1-deploy-hello-world-using-s2i.md'
+    - Deploying sample database: 'app-deployment/2-deploy-sample-db'
+    - Lab Overview: 'app-deployment/3-lab_overview.md'
+    - Deployment: 'app-deployment/4-deployment.md'
+    - Health Check: 'app-deployment/5-healthcheck.md'
+    - Storage: 'app-deployment/6-storage.md'
+    - ConfigMaps, Secrets, Env Var: 'app-deployment/7-confsecenv.md'
+    - Networking: 'app-deployment/8-networking.md'
+    - Scaling: 'app-deployment/12-scaling.md'
+    - Logging: 'app-deployment/9-logging.md'
 
 # Theme Configuration
 theme:
