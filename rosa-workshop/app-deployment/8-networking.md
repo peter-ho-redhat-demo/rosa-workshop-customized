@@ -1,4 +1,4 @@
-## Networking
+## Networking and implement HTTPS
 In this section we'll see how OSToy uses intra-cluster networking to separate functions by using microservices and visualize the scaling of pods.
 
 Let's review how this application is set up...

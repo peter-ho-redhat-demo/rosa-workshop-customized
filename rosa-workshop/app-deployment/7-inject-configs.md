@@ -2,10 +2,10 @@
 
 In this section, we'll take a look at how OSToy can be configured using Secrets and Environment Variables.
 
-Baking or hardcoding the configurations and secrets (e.g. password, connection strings) inside the application source code is a poor practice, and it will create security concerns as all developers are exposes to the production environments credentials. As a best practice, application should externalize any configurations and secrets. These configs and secrets can be put under OpenShift as ConfigMaps, Secrets and environment variables, and let OpenShift dynamically inject those settings back to the running application when the app starts.
+Baking or hardcoding the configurations and secrets (e.g. password, connection strings) inside the application source code is a poor practice, and it will create security concerns as all developers are exposed to production environment credentials. As a best practice, applications should externalize any configurations and secrets. These configs and secrets can be put under OpenShift as ConfigMaps, Secrets and environment variables, and let OpenShift dynamically inject those settings back to the running application when the app starts.
 
 ### 1. Create a Secret
-Kubernetes / OpenSHift Secret objects allow you to store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. Putting this information in a secret is safer and more flexible than putting it, verbatim, into a Pod definition or a container image.
+Kubernetes / OpenShift Secret objects allow you to store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. Putting this information in a secret is safer and more flexible than putting it, verbatim, into a Pod definition or a container image.
 
 To create and associate a Secret object to our OSToy application, please go back to the Developer view, click Secrets on the left menu.
 
@@ -33,7 +33,7 @@ Input the followings:
 - Add secret as: `Volume`
 - Mount path: `/var/secret`
 
-Then click `Save` button. Then, you will see the OSToy front-end application restarts to take the change effective.
+Then click `Save` button. You will see the OSToy front-end application restarts to take the change effective.
 
 Scroll down on the same page to the `Volume` section, you will see that the ostoy-secret has been mounted as files in the `/var/secret/` path inside the front-end application.
 
