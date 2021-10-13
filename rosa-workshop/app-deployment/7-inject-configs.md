@@ -9,6 +9,8 @@ Kubernetes / OpenShift Secret objects allow you to store and manage sensitive in
 
 To create and associate a Secret object to our OSToy application, please go back to the Developer view, click Secrets on the left menu.
 
+![image](images/07-001.jpg)
+
 Click `Create` button, then select `Key/value secret`.
 
 Input `ostoy-secret` as the secret name.
@@ -23,6 +25,10 @@ Create the following secret key/value pairs:
     SMTP=localhost<br>
     SMTP_PORT=25
 
+Once done, click `Create`.
+
+![image](images/07-002.jpg)
+
 ### 2. Mount the Secret to the application
 
 Once created, click the `Add secret to workload` button.
@@ -33,9 +39,13 @@ Input the followings:
 - Add secret as: `Volume`
 - Mount path: `/var/secret`
 
+![image](images/07-003.jpg)
+
 Then click `Save` button. You will see the OSToy front-end application restarts to take the change effective.
 
 Scroll down on the same page to the `Volume` section, you will see that the ostoy-secret has been mounted as files in the `/var/secret/` path inside the front-end application.
+
+![image](images/07-004.jpg)
 
 ### 3. Verify the secret mounting
 
@@ -43,12 +53,16 @@ Go back to your OSToy applcation web page, refresh it. You shall be able to see 
 
 In this page, you will see the application is able to print back the secret.txt file that you have mounted. That proves that the secret has been mounted from the OpenShift to the container.
 
+![image](images/07-005.jpg)
+
 > Challenge yourself: try to remote access into the container, and see what's inside that mounted path.
 
 ### 4. Configuration using environment variables
 Using environment variables is an easy way to change application behavior without requiring code changes. It allows different deployments of the same application to potentially behave differently based on the environment variables, and OpenShift makes it simple to set, view, and update environment variables for Pods/Deployments.
 
-Go back to the OpenShift web console, make sure you are in the Developer view. Again, click the `ostoy-frontend` application circle, then click the application name (ostoy-frontend) to enter the Deployment's detail page.
+Go back to the OpenShift web console, make sure you are in the Developer view and in the Topology page. Again, click the `ostoy-frontend` application circle, then click the application name (ostoy-frontend) to enter the Deployment's detail page.
+
+![image](images/07-006.jpg)
 
 Click `Environment`. Here, you will be able to configure environment variables that the container see.
 
@@ -70,6 +84,8 @@ Add another one (by clicking `Add more`):
 > **Important: Make sure you set the MICROSERVICE_NAME environment variable, as we will use it later.**
 
 Once it is done. Click `Save`.
+
+![image](images/07-007.jpg)
 
 ### 4. Verify the enviornment variable injetion
 
