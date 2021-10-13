@@ -70,10 +70,16 @@ You will see a black logging screen. Depending on how fast your work is, it will
 
 ![image](images/01-006.jpg)
 
+> The build process takes a couple of minutes. Please wait, or you may continue to work on the next exereice in parallel.
+
 Click the `Topology` button on the left to go back to the Developer view.
 
 Click the little icon at the <b><u>top-right</u></b> of your application logo. This will open your application in a new URL.
 
+![image](images/01-007.jpg)
+
 Congrats! You have successfully deployed the application, and now with a URL exposed outside to OpenShift.
+
+![image](images/01-008.jpg)
 
 > Tips: Since our lab environment is exposed to the public Internet, thus the URL that we create also exposed to the Internet. However, ROSA can be created privately with the use of AWS Private Link. In that case, your ROSA will not have any public-facing endpoints and completely isolated from the Iternet.

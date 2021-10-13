@@ -10,7 +10,11 @@ This time, we will create a MySQL database just for fun. We will not link up the
 
 Down below, click `Database` button.
 
+![image](images/02-001.jpg)
+
 Click `MySQL (Ephemeral)`, and then click `Instantiate Template` button.
+
+![image](images/02-002.jpg)
 
 > WARNING: Note: Ephemeral means data storage will not persiste when the container / database restarts for whatever reasons. Thus, this <b>Ephemeral database should NOT be used in production environments!</b> We are just for jun to test this out only!
 
@@ -36,11 +40,17 @@ Click the MySQL application cirle in the Developer view.
 
 Click `Resources`, then click `View logs` next to the first pod's name.
 
+![image](images/02-003.jpg)
+
 Search the logs, you should be able to see `MySQL started successfully` log line inside the page. It should be around in the middle of your logs.
+
+![image](images/02-004.jpg)
 
 ### 3. Try to access and use the MySQL DB
 
 You can also remotely "ssh" into the MySQL container to do some jobs! Now, click the `Terminal` button (which is located in a list of buttons down below the Pod's name)
+
+![image](images/02-005.jpg)
 
 In the terminal, run:
 
@@ -63,6 +73,8 @@ You should now be able to log into the MySQL CLI. Now run the followings to test
     SELECT * FROM Information;
 
 What could you see? You should be able to see a new table has been created, and 3 rows are being inserted into your MySQL DB.
+
+![image](images/02-006.jpg)
 
 Congrats! You have now deployed a running MySQL DB!
 
