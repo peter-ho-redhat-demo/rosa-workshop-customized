@@ -11,6 +11,7 @@ In case you are not able to do it, or encounter any issues or questions, you can
 1. Deploy this Python application (https://github.com/peter-ho-redhat-demo/rosa-workshop-customized-challenge) inside an OpenShift project called `<your-user-id>-challenge`.
     -  This Python application only runs on the version of `Python 3.6`.
     -  This Git repo does not come with any Dockerfile, you have to deploy the app without writing any Dockerfile.
+    -  Set the name to `blog-django-py`.
 
 2. Inside the same OpenShift project, create a PostgreSQL database (need to persist data, not ephemeral) with the following settings:
     - Name: `blog-database`
