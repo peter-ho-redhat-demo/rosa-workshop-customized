@@ -21,8 +21,8 @@ nav:
   - Part 2 - Application deployment:
     - Deploying hello world app: 'app-deployment/1-deploy-hello-world-using-s2i.md'
     - Deploying sample database: 'app-deployment/2-deploy-sample-db.md'
-    - Lab Overview: 'app-deployment/3-lab_overview.md'
-    - Deployment: 'app-deployment/4-deployment.md'
+    - OSToy app overview: 'app-deployment/3-ostoy-lab-overview.md'
+    - Deploy OSToy via YAML: 'app-deployment/4-deploy-yaml.md'
     - Health Check: 'app-deployment/5-healthcheck.md'
     - Storage: 'app-deployment/6-storage.md'
     - ConfigMaps, Secrets, Env Var: 'app-deployment/7-confsecenv.md'
