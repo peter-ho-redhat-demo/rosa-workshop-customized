@@ -1,5 +1,7 @@
 <!---## Red Hat OpenShift Service on AWS (ROSA) information pages-->
 
+# This repo has been modified for Hong Kong's 2021-10-19 ROSA hands-on workshop
+
 ### What is Red Hat OpenShift Service on AWS (ROSA)?
 ROSA is a _fully_ managed Red Hat OpenShift cluster running natively on Amazon Web Services (AWS), which allows customers to quickly and easily build, deploy, and manage Kubernetes applications on the industry’s most comprehensive Kubernetes platform in the AWS public cloud. 
 
