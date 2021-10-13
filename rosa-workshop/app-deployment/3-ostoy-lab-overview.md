@@ -1,4 +1,4 @@
-### About OSToy application
+## About OSToy application
 
 OSToy is a simple Node.js application that we will deploy to ROSA. It is used to help us explore the functionality of Kubernetes. This application has a user interface where you can:
 

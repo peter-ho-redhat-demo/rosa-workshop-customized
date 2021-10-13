@@ -24,7 +24,7 @@ nav:
     - OSToy app overview: 'app-deployment/3-ostoy-lab-overview.md'
     - Deploy OSToy app via YAML: 'app-deployment/4-deploy-yaml.md'
     - Setting up health probe: 'app-deployment/5-healthcheck.md'
-    - Storage: 'app-deployment/6-storage.md'
+    - Mount AWS EBS storage to app: 'app-deployment/6-storage.md'
     - ConfigMaps, Secrets, Env Var: 'app-deployment/7-confsecenv.md'
     - Networking: 'app-deployment/8-networking.md'
     - Scaling: 'app-deployment/12-scaling.md'

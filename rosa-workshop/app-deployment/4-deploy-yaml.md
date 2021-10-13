@@ -65,7 +65,7 @@ You should see the following response:
 
 Please open the [URL](https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-microservice-deployment.yaml) that you apply to view the details of the YAML configuration of your back-end microservice app. The instructor will explain the YAML in words. Please consult the instructor or help if you are in doubt about the YAML.
 
-#### 4. Deploy the front-end service
+### 4. Deploy the front-end service
 
 The frontend deployment contains the Node.js frontend for our application along with a few Kubernetes objects (with an additiona Route object, which helps to create a URL to expose the front-end outside OpenShift network).
 
@@ -83,7 +83,7 @@ You should see all objects created successfully
 
 Please open the [URL](https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-fe-deployment.yaml) that you apply to view the details of the YAML configuration of your front-end app. The instructor will explain the YAML in words. Please consult the instructor or help if you are in doubt about the YAML.
 
-#### 5. Get the route and view the front-end application
+### 5. Get the route and view the front-end application
 Get the route so that we can access the application via: 
     
     oc get route
