@@ -2,13 +2,15 @@
 
 Although using web console to deploy apps sometimes is attractive, the best practice in using Kubenretes and OpenShift is always to leverage configuration-as-code concept. 
 
-Kubernetes and OpenShift's all application configurations and definitions can be written in a YAML format, and then those YAML files can be treated as code and be placed inside a version control system like Git. Onec the YAMLs are written, you apply those to Kubernetes or OpenShift, and the platform will continuous loop to check the definition against the current state, and if something does not meet to definition, that platform will automatically do the work for you to meet the definition (or so called the desired state).
+Kubernetes and OpenShift's all application configurations and definitions can be written in a YAML format, and then those YAML files can be treated as code and be placed inside a version control system like Git. Once the YAMLs are written, you apply those to Kubernetes or OpenShift, and the platform will continuously loop to check the definition against the current state. Uf something does not meet to definition, the platform will automatically do the work for you to meet the definition (or so called the desired state).
 
 Thus, another way to deploy application would be to have the images for the app (like the front-end and back-end microservices) containers already created (for example, via CI/CD, but CI/CD is out of today's scope) and stored in an image repository. Then, you write YAMLs and apply them to OpenShift. We will do that now.
 
 ### 1. Retrieve the login command
 
 Go back to you OpenShift web console, look at the console's top-right corner and you will see your username, click it, and then click `Copy login command`.
+
+![image](images/04-001.jpg)
 
 A new tab will open, and you may be asked to authenticate again.
 
@@ -21,7 +23,7 @@ Create a new project in your cluster by entering the following command:
 
     oc new-project <your-user-id>-ostoy
 
-> <b>WARNING: Please replace \<your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.</b>
+> <b>WARNING: Please replace <your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.</b>
 
 You should receive the following response:
 
@@ -36,17 +38,6 @@ You should receive the following response:
     to build a new example application in Ruby.
 
 Equivalently you can also create this new project using the web console. Do you still remember how to create a new project via OpenShift web console? We have gone though this is the the first exercise!
-
-<!---
-#### 3. Download the YAML configuration
-Download the Kubernetes deployment object yamls from the following locations to your local machine, in a directory of your choosing (just remember where you placed them for the next step).
-
-[ostoy-fe-deployment.yaml](https://raw.githubusercontent.com/openshift-cs/rosaworkshop/master/ostoy/yaml/ostoy-fe-deployment.yaml)
-
-[ostoy-microservice-deployment.yaml](https://raw.githubusercontent.com/openshift-cs/rosaworkshop/master/ostoy/yaml/ostoy-microservice-deployment.yaml)
-
-Feel free to open them up and take a look at what we will be deploying. For simplicity of this lab we have placed all the Kubernetes objects for the front-end in an "all-in-one" yaml file.  Though in reality there are benefits (ease of maintenance and less risk) to separating these out into individual yaml files.
--->
 
 ### 3. Deploy the backend microservice
 
@@ -67,7 +58,7 @@ Please open the [URL](https://raw.githubusercontent.com/peter-ho-redhat-demo/ros
 
 ### 4. Deploy the front-end service
 
-The frontend deployment contains the Node.js frontend for our application along with a few Kubernetes objects (with an additiona Route object, which helps to create a URL to expose the front-end outside OpenShift network).
+The frontend deployment contains the Node.js frontend for our application along with a few Kubernetes objects (with an additional Route object, which helps to create a URL to expose the front-end outside OpenShift network).
 
 In your terminal, deploy the front-end using the following command:
 
@@ -93,6 +84,8 @@ You should see the following response:
     NAME          HOST/PORT                                                 PATH   SERVICES             PORT    TERMINATION   WILDCARD
     ostoy-route   ostoy-route-ostoy.apps.my-rosa-cluster.g14t.p1.openshiftapps.com          ostoy-frontend-svc   <all>                 None
 
-Copy the URL in the output (Note: different people will have different URL, as OpenShift will generate the URL based on the OpenShift project that the app is deployed on) above and paste it into your browser and press enter. You should see the homepage of our application. 
+Copy the URL in the output (Note: different people will have different URL, as OpenShift will generate the URL based on the OpenShift project that the app is deployed on) above and paste it into your browser and press enter. You should see the homepage of our application.
 
 > Note: If the page does not come up make sure that it is using `http` and **not** `https`. We will come back to make it https later.
+
+![image](images/04-002.jpg)

@@ -16,7 +16,7 @@ Click `MySQL (Ephemeral)`, and then click `Instantiate Template` button.
 
 ![image](images/02-002.jpg)
 
-> WARNING: Note: Ephemeral means data storage will not persiste when the container / database restarts for whatever reasons. Thus, this <b>Ephemeral database should NOT be used in production environments!</b> We are just for jun to test this out only!
+> WARNING: Note: Ephemeral means data storage will not persiste when the pod / database restarts for whatever reasons. Thus, this <b>Ephemeral database should NOT be used in production environments!</b> We are just for jun to test this out only!
 
 Please enter the followings:
 
@@ -48,7 +48,7 @@ Search the logs, you should be able to see `MySQL started successfully` log line
 
 ### 3. Try to access and use the MySQL DB
 
-You can also remotely "ssh" into the MySQL container to do some jobs! Now, click the `Terminal` button (which is located in a list of buttons down below the Pod's name)
+You can also remotely "ssh" into the MySQL pod to do some jobs! Now, click the `Terminal` button (which is located in a list of buttons down below the Pod's name)
 
 ![image](images/02-005.jpg)
 
