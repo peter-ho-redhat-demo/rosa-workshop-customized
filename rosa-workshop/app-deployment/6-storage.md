@@ -16,6 +16,8 @@ To start, go back to the Developer console view. Click the `ostoy-frontend` appl
 
 On the right-hand-side, click `Actions`, then click `Add storage`.
 
+![image](images/06-001.jpg)
+
 Input the followings:
 
 - Persistent Volume Claim: Select `Create new claim`
@@ -35,14 +37,20 @@ The created EBS storage is represented as a PersistentVolumeClaim object in Open
 
 Inside the OpenShift web UI, instead of viewing in Developer view, now click the `Developer` button on the left and change the view to `Administrator`.
 
+![image](images/06-002.jpg)
+
 Click on `Storage` on the left menu, then `PersistentVolumeClaims`. You will see our newly created stroage `ostoy-pvc`.  If you click on it, you will also see other information such as whether it is bound or not, size, access mode and age.
+
+![image](images/06-003.jpg)
 
 In this case the mode is RWO (Read-Write-Once) which means that the volume can only be mounted to one pod. As one option for Persistent Volumes in ROSA are backed by EBS it only supports RWO. If you want RWX (Read-Write-Many), consider using AWS EFS (Elastic File Storage).
 
 > Hints: [See here for more info on access modes](https://docs.openshift.com/container-platform/4.8/storage/understanding-persistent-storage.html#pv-access-modes_understanding-persistent-storage)
 
 ### 3. Create a file to store inside the created AWS EBS
-In the OSToy app, click on `Persistent Storage` on the left menu.  In the "Filename" area enter a filename for the file you will create (ie: `test-pv.txt`). Please use a **".txt"** extension so that the file will be visible in the browser.
+In the OSToy app, refresh to page.
+
+Click on `Persistent Storage` on the left menu.  In the "Filename" area enter a filename for the file you will create (ie: `test-pv.txt`). Please use a **".txt"** extension so that the file will be visible in the browser.
 
 Underneath that, in the "File Contents" box, enter text to be stored in the file. (e.g.: `OpenShift is the greatest thing since sliced bread!` or `test` :) ).  Then click "Create file".
 
