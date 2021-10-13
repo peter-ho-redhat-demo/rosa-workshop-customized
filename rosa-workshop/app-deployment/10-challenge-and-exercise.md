@@ -39,7 +39,6 @@ In case you are not able to do it, or encounter any issues or questions, you can
         - Size: `1 GiB`
         - Volume mode: `File system`
         - Mount path: `/opt/app-root/src/media`
-    -  Visit the Python app, create some new blog posts, and then click one of the blog title. Now, upload an image to test the storage.
 
 6. Configure environment variable in the Python app to change the website's appreance:
     - Set a variable with a key=`BLOG_BANNER_COLOR` and with a value=`#db212e`
