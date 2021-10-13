@@ -1,69 +1,42 @@
-## Scaling
-OpenShift allows one to scale up/down the number of pods for each part of an application as needed.  This can be accomplished via changing our *replicaset/deployment* definition (declarative), by the command line (imperative), or via the web UI (imperative). In our *deployment* definition (part of our `ostoy-fe-deployment.yaml`) we stated that we only want one pod for our microservice to start with. This means that the Kubernetes Replication Controller will always strive to keep one pod alive. We can also define [autoscaling](https://docs.openshift.com/dedicated/4/nodes/pods/nodes-pods-autoscaling.html) based on load to expand past what we defined if needed which we will do in a later section of this lab.
+## Manual scaling
 
-If we look at the tile on the left we should see one box randomly changing colors. This box displays the randomly generated color sent to the frontend by our microservice along with the pod name that sent it. Since we see only one box that means there is only one microservice pod.  We will now scale up our microservice pods and will see the number of boxes change.
+OpenShift allows one to scale up/down the number of pods for each part of an application as needed.  This can be accomplished via changing our Deployment definition (declarative), by the command line (imperative), or via the web UI (imperative). 
 
-#### 1. Confirm number of pods running
-To confirm that we only have one pod running for our microservice, run the following command, or use the web UI.
+In our Deployment definition that we applied earlier, we stated that we only want one pod for our microservice to start with. This means that the Kubernetes Replication Controller will always strive to keep one pod alive. 
 
+We can also define autoscaling based on load to expand past what we defined if needed which we will do in a later section of this lab.
+
+Go to your OSToy application web application UI, click `Networking`. Under the `Intra-cluster Communication` section, you will see there is one box randomly changing colors. This box displays the randomly generated color sent to the frontend by our microservice along with the pod name that sent it. Since we see only one box that means there is only one microservice pod.
+
+### 1. Confirm number of pods running via CLI
+To confirm that we only have one pod running for our microservice, run the following command (or use the OpenShift web UI).
+
+	oc get pods
+
+You should see something like this:
 
 	$ oc get pods
+
 	NAME                                   READY     STATUS    RESTARTS   AGE
 	ostoy-frontend-679cb85695-5cn7x       1/1       Running   0          1h
 	ostoy-microservice-86b4c6f559-p594d   1/1       Running   0          1h
 
+### 2. Scale pods via CLI
 
-#### 2. Scale pods via Deployment definition
-Let's change our microservice definition yaml to reflect that we want 3 pods instead of the one we see. Download the [ostoy-microservice-deployment.yaml](https://raw.githubusercontent.com/openshift-cs/osdworkshop/master/OSD4/yaml/ostoy-microservice-deployment.yaml) and save it on your local machine, if you didn't do so already.
+Now, we want to ostoy-microservice (note: NOT the frontend) to be scaled out to have 3 replica of pods. To do that, run the command below (or you can use the OpenShift web UI):
 
-- Open the file using your favorite editor. Ex: `vi ostoy-microservice-deployment.yaml`
-- Find the line that states `replicas: 1` and change that to `replicas: 3`. Then save and quit.
+	oc scale deployment ostoy-microservice --replicas=3
 
-It will look like this:
+Back to your OpenShift web console, on the Developer view, click the `ostoy-microservice` application circle. Confirm that there are now 3 pods. You can also run `oc get pods` again in CLI to confirm the change.
 
+Now, to see this visually, go back to the OSToy application, click `Netoworking`, under the `Intra-cluster Communication` section, you will see there are 3 boxes randomly changing colors. 
 
-	spec:
-	    selector:
-	      matchLabels:
-	        app: ostoy-microservice
-	    replicas: 3
+### 3. Scale down via web UI
+Let's use the web UI to scale back down to one pod.
 
-- Assuming you are still logged in via the CLI, execute the following command:
+Back to the OpenShift web console, in the Developer view, click the `ostoy-microservice` application circle. On the right hand side, click `Details`, and then click the `down arrow` to scale the number of pods to 1.
 
-		oc apply -f ostoy-microservice-deployment.yaml
-
->NOTE: (You could also change it directly in the OpenShift Web Console by going to Deployments > "ostoy-microservice" > "YAML" tab)
-
-- Confirm that there are now 3 pods via the CLI (`oc get pods`) or the web UI (*Workloads > Deployments > ostoy-microservice*).
-- See this visually by visiting the OSToy app > Autoscaling in the left menu and counting how many boxes there are now.  It should be three.
-
-![UI Scale](images/8-ostoy-colorspods.png)
-
-#### 3. Scale down via CLI
-Now we will scale the pods down using the command line.  
-
-- Execute the following command from the CLI: 
-
-		oc scale deployment ostoy-microservice --replicas=2
-
-- Confirm that there are indeed 2 pods, via the CLI or the web UI.
-
-		oc get pods
-
-- See this visually by visiting the OSToy app and counting how many boxes there are now.  It should be two.
-
-#### 4. Scale down via web UI
-Lastly, let's use the web UI to scale back down to one pod.  
-
-- In the project you created for this app (ie: "ostoy") in the left menu click *Workloads > Deployments > ostoy-microservice*.  On the left you will see a blue circle with the number 2 in the middle. 
-- Click on the down arrow to the right of that to scale the number of pods down to 1.
-
-![UI Scale](images/8-ostoy-uiscale1.png)
-
-- See this visually by visiting the OSToy app and counting how many boxes there are now.  It should be one.
-- You can also confirm this via the CLI or the web UI
-
-
+Now, to see this visually, go back to the OSToy application, click `Netoworking`, under the `Intra-cluster Communication` section, you will see there are 1 box randomly changing colors. 
 
 
 ## Autoscaling
@@ -110,39 +83,3 @@ This will generate some CPU intensive calculations.  (If you are curious about w
 After about a minute the new pods will show up on the page (represented by the colored rectangles). Confirm that the pods did indeed scale up through the OpenShift Web Console or the CLI (you can use the command above).
 
 > **Note:** The page may still lag a bit which is normal.
-
-#### 5. Review resources with monitoring
-
-After confirming that the autoscaler did spin up new pods, switch to Grafana to visually see the resource consumption of the pods and see how the workloads were distributed.
-
-We can also view the same information through the OpenShift Web Console by going through *Monitoring* > *Dashboards* in the left-hand menu.
-
-![Dashboard](images/12-dashboard.png)
-
-
-Or to use Grafana directly, go to the following url:
-
-	https://grafana-openshift-monitoring.apps.<cluster-id>.<shard-id>.p1.openshiftapps.com
-
-(e.g., https://grafana-openshift-monitoring.apps.demo-cluster.a1b2.p1.openshiftapps.com/)
-
-
-Click on *General / Home* on the top left.
-
-![Grafana](images/12-grafana-home.png)
-
-Select the *Default* folder then *"Default / Kubernetes / Compute Resources / Namespace (Pods)"* dashboard.
-
-![Select Dash](images/12-grafana-dash.png)
-
-Click on *Namespace* and select our project name "ostoy".
-
-![Select NS](images/12-grafana-ns.png)
-
-Colorful graphs will appear showing resource usage across CPU and memory.  The top graph will show recent CPU consumption per pod and the lower graph will indicate memory usage.  Looking at this graph you can see how things developed. As soon as the load started to increase (A), three new pods started to spin up (B, C, D). The thickness of each graph is its CPU consumption indicating which pods handled more load.  We also see that after the load decreased, the pods were spun back down (E).
-
-![CPU](images/12-grafana-cpu.png)
-
-Mouse over the graph and the tool will display the names and corresponding CPU consumption of each pod as seen below.
-
-![CPU](images/12-grafana-metrics.png)
