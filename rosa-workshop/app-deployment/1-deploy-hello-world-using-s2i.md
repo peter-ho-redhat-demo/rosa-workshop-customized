@@ -6,7 +6,11 @@ In this section, we will directly deploy a sample Spring Boot application, witho
 
 Click the arrow icon down below the top-left OpenShift logo in your OpenShift web console, then select `Developer` to view the console in a developer-focused view.
 
+    ![image1](images/01-001.jpg)
+
 Right next to the `Developer` view button, click the `Project` button arrow, then click `Create Project`.
+
+    ![image2](images/01-002.jpg)
 
 In the name field, please enter:
 
