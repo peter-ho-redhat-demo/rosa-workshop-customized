@@ -71,10 +71,14 @@ Add another one (by clicking `Add more`):
 
 Once it is done. Click `Save`.
 
+### 4. Verify the enviornment variable injetion
+
 Click `Topology` on the left. You shall notice that the application is restarting to make the change effective.
 
 Once it is done (e.g. the circle shows a deep blue color), open the OSToy front-end application again and refresh, click `ENV Variables`.
 
 Try to find it out: can you see `TESTING_VARIABLE_1` and `TESTING_VARIABLE_2` are on the list? If yes, then that means your container has collected the setting that you set in OpenShift!
+
+> Challenge yourself again: try to remote access into the container, and try to print out the environment variables using shell commands. See what you will find!
 
 Congrats! You have now injected OpenShift secrets into your container, and dynamically set the container's environment variable on OpenShift without application rebuild!
