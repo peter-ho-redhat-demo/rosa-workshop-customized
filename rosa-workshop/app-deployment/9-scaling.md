@@ -38,29 +38,34 @@ Back to the OpenShift web console, in the Developer view, click the `ostoy-micro
 
 Now, to see this visually, go back to the OSToy application, click `Netoworking`, under the `Intra-cluster Communication` section, you will see there are 1 box randomly changing colors. 
 
-
 ## Autoscaling
 
-In this section we will explore how the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) can be used and works within Kubernetes/OpenShift. See here for [cluster autoscaling](/rosa/8-autoscaling) in ROSA.
+In this section, we will explore how the Horizontal Pod Autoscaler (HPA). It can be used and work within Kubernetes/OpenShift.
 
-As defined in the Kubernetes documentation:
-> Horizontal Pod Autoscaler automatically scales the number of pods in a replication controller, deployment, replica set or stateful set based on observed CPU utilization.
+Horizontal Pod Autoscaler automatically scales the number of pods in a replication controller, deployment, replica set or stateful set based on observed CPU and/or memory utilization, or even some custom application metrics.
 
-We will create an HPA and then use OSToy to generate CPU intensive workloads.  We will then observe how the HPA will scale up the number of pods in order to handle the increased workloads.  
+We will create an HPA and then use OSToy to generate CPU intensive workloads. We will then observe how the HPA will scale up the number of pods in order to handle the increased workloads.
 
-#### 1. Create the Horizontal Pod Autoscaler
+### 1. Create the Horizontal Pod Autoscaler
 
-Run the following command to create the autoscaler. This will create an HPA that maintains between 1 and 10 replicas of the Pods controlled by the *ostoy-microservice* Deployment created. Roughly speaking, the HPA will increase and decrease the number of replicas (via the deployment) to maintain an average CPU utilization across all Pods of 80% (since each pod requests 50 millicores, this means average CPU usage of 40 millicores)
+We can create the HPA object using OpenShift web console, via CLI, or via YAML definition. This time, we will use the web console.
 
-	oc autoscale deployment/ostoy-microservice --cpu-percent=80 --min=1 --max=10
+Back to your OpenShift web console, in the Developer view, click the `ostoy-microservice` application circle. On the right hand side, click `Actions`, then click `Add HorizontalPodAutoscaler`
 
-#### 2. View the current number of pods
+Input the followings:
 
-In the OSToy app in the left menu click on "Autoscaling" to access this portion of the workshop.  
+- Name: `ostoy-microservice-hpa`
+- Minimum pods: `1`
+- Maximum pods: `10`
+- CPU Utilization: `80`
 
-![HPA Menu](images/12-hpa-menu.png)
+Roughly speaking, the HPA will increase and decrease the number of replicas (via the deployment) to maintain an average CPU utilization across all Pods of 80% (since we have set each pod requests 50 millicores in the orginal YAML definition, this means average CPU usage of 40 millicores).
 
-As was in the networking section you will see the total number of pods available for the microservice by counting the number of colored boxes.  In this case we have only one.  This can be verified through the web UI or from the CLI.
+### 2. View the current number of pods
+
+In the OSToy app in the left menu click on "Autoscaling".
+
+As was in the networking section you will see the total number of pods available for the microservice by counting the number of colored boxes. In this case we have only one. This can be verified through the web UI or from the CLI.
 
 You can use the following command to see the running microservice pods only:
 
@@ -70,16 +75,18 @@ or visually in our application:
 
 ![HPA Main](images/12-hpa-mainpage.png)
 
-#### 3. Increase the load
+### 3. Increase the load
 
-Now that we know that we only have one pod let's increase the workload that the pod needs to perform. Click the link in the center of the card that says "increase the load".  **Please click only *ONCE*!**
+Now that we know that we only have one pod let's increase the workload that the pod needs to perform. Click the link in the center of the card that says "increase the load".  <u>**Please click only *ONCE*!!!!**</u>
 
 This will generate some CPU intensive calculations.  (If you are curious about what it is doing you can click [here](https://github.com/openshift-cs/ostoy/blob/master/microservice/app.js#L32)).
 
-> **Note:** The page may become slightly unresponsive.  This is normal; so be patient while the new pods spin up.
+> **Note: The page may become slightly unresponsive.  This is normal; so be patient while the new pods spin up.**
 
-#### 4. See the pods scale up
+### 4. See the pods scale up
 
-After about a minute the new pods will show up on the page (represented by the colored rectangles). Confirm that the pods did indeed scale up through the OpenShift Web Console or the CLI (you can use the command above).
+After about a minute the new pods will show up on the page (represented by the colored rectangles). Confirm that the pods did indeed scale up through the OpenShift Web Console or the CLI.
 
-> **Note:** The page may still lag a bit which is normal.
+> **Note: The page may still lag a bit which is normal.**
+
+Congrats! You have scaled your application manually or automatically via HPA configuration.
