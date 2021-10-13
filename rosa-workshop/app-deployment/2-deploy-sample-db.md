@@ -12,7 +12,7 @@ Down below, click `Database` button.
 
 Click `MySQL (Ephemeral)`, and then click `Instantiate Template` button.
 
-> :warning: Note: Ephemeral means data storage will not persiste when the container / database restarts for whatever reasons. Thus, this <b>Ephemeral database should NOT be used in production environments!</b> We are just for jun to test this out only!
+> WARNING: Note: Ephemeral means data storage will not persiste when the container / database restarts for whatever reasons. Thus, this <b>Ephemeral database should NOT be used in production environments!</b> We are just for jun to test this out only!
 
 Please enter the followings:
 
@@ -66,4 +66,4 @@ What could you see? You should be able to see a new table has been created, and 
 
 Congrats! You have now deployed a running MySQL DB!
 
-> :warning: Remember this DB data is not persisted and thus it should never be used in production! Consider using a MySQL DB image with persistent stroag provided by OpenShift instead.)
+> WARNING: Remember this DB data is not persisted and thus it should never be used in production! Consider using a MySQL DB image with persistent stroag provided by OpenShift instead.)

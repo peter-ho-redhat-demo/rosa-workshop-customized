@@ -20,7 +20,7 @@ nav:
     - Obtaining support: 'rosa/13-obtaining_support.md'
   - Part 2 - Application deployment:
     - Deploying hello world app: 'app-deployment/1-deploy-hello-world-using-s2i.md'
-    - Deploying sample database: 'app-deployment/2-deploy-sample-db'
+    - Deploying sample database: 'app-deployment/2-deploy-sample-db.md'
     - Lab Overview: 'app-deployment/3-lab_overview.md'
     - Deployment: 'app-deployment/4-deployment.md'
     - Health Check: 'app-deployment/5-healthcheck.md'

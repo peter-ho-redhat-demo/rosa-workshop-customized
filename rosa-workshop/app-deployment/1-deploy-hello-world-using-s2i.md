@@ -14,7 +14,7 @@ In the name field, please enter:
     
 For example, if your user ID given is `user1`, then please enter `user1-helloworld`.
 
-> :warning: Please replace \<your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.
+> WARNING: Please replace \<your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.
 
 ### Deploy a sample Spring Boot app
 
