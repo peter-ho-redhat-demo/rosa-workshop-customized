@@ -2,7 +2,7 @@
 
 In this section, we will leverage the OpenShift's build-in open source database images to run a testing MySQL DB.
 
-### Deploy a new database
+### 1. Deploy a new database
 
 Click `+ Add` button.
 
@@ -30,7 +30,7 @@ Wait for a few moments to let OpenShift deploy and run the MySQL database.
 
 > Hint: When the circle color around the MySQL application in the Developer view turns from light blue to deep blue color, it means the application (i.e. the database) is now ready, up-and-running.
 
-### Verify the result
+### 2. Verify the result
 
 Click the MySQL application cirle in the Developer view.
 
@@ -38,7 +38,7 @@ Click `Resources`, then click `View logs` next to the first pod's name.
 
 Search the logs, you should be able to see `MySQL started successfully` log line inside the page. It should be around in the middle of your logs.
 
-### Try to access and use the MySQL DB
+### 3. Try to access and use the MySQL DB
 
 You can also remotely "ssh" into the MySQL container to do some jobs! Now, click the `Terminal` button (which is located in a list of buttons down below the Pod's name)
 

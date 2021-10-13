@@ -1,34 +1,33 @@
 ## Deploy via a Kubernetes Deployment
 
-One way to deploy the application would be to have the images for the front-end and back-end microservice containers already created (via CI/CD) and stored in an image repository.  You can then create Kubernetes deployments (YAML) and use those to deploy the application.  We will do that now.
+Although using web console to deploy apps sometimes is attractive, the best practice in using Kubenretes and OpenShift is always to leverage configuration-as-code concept. 
 
-#### 1. Retrieve the login command
-If you are not logged in via the CLI, [access your cluster via the web console](/rosa/6-access_cluster/#accessing-the-cluster-via-the-web-console), then click on the dropdown arrow next to your name in the top-right and select *Copy Login Command*.
+Kubernetes and OpenShift's all application configurations and definitions can be written in a YAML format, and then those YAML files can be treated as code and be placed inside a version control system like Git. Onec the YAMLs are written, you apply those to Kubernetes or OpenShift, and the platform will continuous loop to check the definition against the current state, and if something does not meet to definition, that platform will automatically do the work for you to meet the definition (or so called the desired state).
 
-![CLI Login](images/4-cli-login.png)
+Thus, another way to deploy application would be to have the images for the app (like the front-end and back-end microservices) containers already created (for example, via CI/CD, but CI/CD is out of today's scope) and stored in an image repository. Then, you write YAMLs and apply them to OpenShift. We will do that now.
 
-A new tab will open and select the authentication method you are using (in our case it's *github*)
+### 1. Retrieve the login command
 
-Click *Display Token*
+Go back to you OpenShift web console, look at the console's top-right corner and you will see your username, click it, and then click `Copy login command`.
 
-Copy the command under where it says "Log in with this token". Then go to your terminal and paste that command and press enter.  You will see a similar confirmation message if you successfully logged in.
+A new tab will open, and you may be asked to authenticate again.
 
-    $ oc login --token=RYhFlXXXXXXXXXXXX --server=https://api.osd4-demo.abc1.p1.openshiftapps.com:6443
-    Logged into "https://api.osd4-demo.abc1.p1.openshiftapps.com:6443" as "0kashi" using the token provided.
+Click `Display Token`.
 
-    You don't have any projects. You can try to create a new project, by running
+Copy the command under where it says "Log in with this token". Then go to your terminal that was given and paste that command and press enter.
 
-    oc new-project <projectname>
+### 2. Create new project
+Create a new project in your cluster by entering the following command:
 
-#### 2. Create new project
-Create a new project called "ostoy" in your cluster by entering the following command:
+    oc new-project <your-user-id>-ostoy
 
-    oc new-project ostoy
+> <b>WARNING: Please replace \<your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.</b>
 
-You should receive the following response
+You should receive the following response:
 
-    $ oc new-project ostoy
-    Now using project "ostoy" on server "https://api.osd4-demo.abc1.p1.openshiftapps.com:6443".
+    $ oc new-project user1-ostoy
+
+    Now using project "user1-ostoy" on server "https://api.osd4-demo.abc1.p1.openshiftapps.com:6443".
 
     You can add applications to this project with the 'new-app' command. For example, try:
 
@@ -36,9 +35,7 @@ You should receive the following response
 
     to build a new example application in Ruby.
 
-Equivalently you can also create this new project using the [web console UI](/rosa/6-access_cluster/#accessing-the-cluster-via-the-web-console) by clicking on "Projects" under "Home" on the left menu, and then click "Create Project" button on the right.
-
-![UI Create Project](images/4-createnewproj.png)
+Equivalently you can also create this new project using the web console. Do you still remember how to create a new project via OpenShift web console? We have gone though this is the the first exercise!
 
 <!---
 #### 3. Download the YAML configuration
@@ -51,49 +48,43 @@ Download the Kubernetes deployment object yamls from the following locations to 
 Feel free to open them up and take a look at what we will be deploying. For simplicity of this lab we have placed all the Kubernetes objects for the front-end in an "all-in-one" yaml file.  Though in reality there are benefits (ease of maintenance and less risk) to separating these out into individual yaml files.
 -->
 
-#### 3. Deploy the backend microservice
+### 3. Deploy the backend microservice
+
 The microservice serves internal web requests and returns a JSON object containing the current hostname and a randomly generated color string.
 
-In your terminal deploy the microservice using the following command:
+In your terminal, deploy the microservice using the following command:
 
-    oc apply -f https://raw.githubusercontent.com/openshift-cs/rosaworkshop/master/rosa-workshop/ostoy/yaml/ostoy-microservice-deployment.yaml
+    oc apply -f https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-microservice-deployment.yaml
 
 You should see the following response:
 
-    $ oc apply -f https://raw.githubusercontent.com/openshift-cs/rosaworkshop/master/rosa-workshop/ostoy/yaml/ostoy-microservice-deployment.yaml
+    $ oc apply -f https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-microservice-deployment.yaml
+
     deployment.apps/ostoy-microservice created
     service/ostoy-microservice-svc created
 
+Please open the [URL](https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-microservice-deployment.yaml) that you apply to view the details of the YAML configuration of your back-end microservice app. The instructor will explain the YAML in words. Please consult the instructor or help if you are in doubt about the YAML.
+
 #### 4. Deploy the front-end service
-The frontend deployment contains the node.js frontend for our application along with a few other Kubernetes objects to illustrate examples.
 
- If you open the *ostoy-fe-deployment.yaml* you will see we are defining:
+The frontend deployment contains the Node.js frontend for our application along with a few Kubernetes objects (with an additiona Route object, which helps to create a URL to expose the front-end outside OpenShift network).
 
-- Persistent Volume Claim
-- Deployment Object
-- Service
-- Route
-- Configmaps
-- Secrets
+In your terminal, deploy the front-end using the following command:
 
-In your terminal, deploy the frontend along with creating all objects mentioned above by entering:
-
-    oc apply -f https://raw.githubusercontent.com/openshift-cs/rosaworkshop/master/rosa-workshop/ostoy/yaml/ostoy-fe-deployment.yaml
+    oc apply -f https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-fe-deployment.yaml
 
 You should see all objects created successfully
 
-    $ oc apply -f https://raw.githubusercontent.com/openshift-cs/rosaworkshop/master/rosa-workshop/ostoy/yaml/ostoy-fe-deployment.yaml
-    persistentvolumeclaim/ostoy-pvc created
+    $ oc apply -f https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-fe-deployment.yaml
+
     deployment.apps/ostoy-frontend created
     service/ostoy-frontend-svc created
     route.route.openshift.io/ostoy-route created
-    configmap/ostoy-configmap-env created
-    secret/ostoy-secret-env created
-    configmap/ostoy-configmap-files created
-    secret/ostoy-secret created
 
-#### 5. Get the route
-Get the route so that we can access the application via 
+Please open the [URL](https://raw.githubusercontent.com/peter-ho-redhat-demo/rosa-workshop-customized/master/rosa-workshop/app-deployment/yaml/ostoy-fe-deployment.yaml) that you apply to view the details of the YAML configuration of your front-end app. The instructor will explain the YAML in words. Please consult the instructor or help if you are in doubt about the YAML.
+
+#### 5. Get the route and view the front-end application
+Get the route so that we can access the application via: 
     
     oc get route
 
@@ -102,7 +93,6 @@ You should see the following response:
     NAME          HOST/PORT                                                 PATH   SERVICES             PORT    TERMINATION   WILDCARD
     ostoy-route   ostoy-route-ostoy.apps.my-rosa-cluster.g14t.p1.openshiftapps.com          ostoy-frontend-svc   <all>                 None
 
-#### 6. View the app
-Copy `ostoy-route-ostoy.apps.my-rosa-cluster.g14t.p1.openshiftapps.com` above and paste it into your browser and press enter. You should see the homepage of our application. If the page does not come up make sure that it is using `http` and **not** `https`.
+Copy the URL in the output (Note: different people will have different URL, as OpenShift will generate the URL based on the OpenShift project that the app is deployed on) above and paste it into your browser and press enter. You should see the homepage of our application. 
 
-![Home Page](images/4-ostoy-homepage.png)
+> Note: If the page does not come up make sure that it is using `http` and **not** `https`. We will come back to make it https later.

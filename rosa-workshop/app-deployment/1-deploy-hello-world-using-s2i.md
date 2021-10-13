@@ -2,7 +2,7 @@
 
 In this section, we will directly deploy a sample Spring Boot application, without any Docker knowledge via a specialized tool in OpenShift called S2I.
 
-### Creating a new project (same as Namespace in Kubernetes)
+### 1. Creating a new project (same as Namespace in Kubernetes)
 
 Click the arrow icon down below the top-left OpenShift logo in your OpenShift web console, then select `Developer` to view the console in a developer-focused view.
 
@@ -14,9 +14,9 @@ In the name field, please enter:
     
 For example, if your user ID given is `user1`, then please enter `user1-helloworld`.
 
-> WARNING: Please replace \<your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.
+> <b>WARNING: Please replace \<your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.</b>
 
-### Deploy a sample Spring Boot app
+### 2. Deploy a sample Spring Boot app
 
 Click the `+ Add` button.
 
@@ -49,6 +49,8 @@ It will trigger an OpenShift S2I image build process. In short, it does the foll
 7. Automatically write K8S YAML configurations to run your app on OpenShift
 
 > S2I is a great tool for developers who doesn't know Docker and Kubernetes command very well. The S2I image build process above can be cusotmized too, although we will not cover this in today's workshop as it is an advanced topic.
+
+### 3. Verify the result
 
 Now, back to the Developer view. (Hint: You may check the `Topology` button on the left in case you are lost).
 
