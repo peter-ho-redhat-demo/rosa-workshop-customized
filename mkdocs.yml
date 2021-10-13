@@ -23,6 +23,7 @@ nav:
     - Inject appliation configs: 'app-deployment/7-inject-configs.md'
     - Implement TLS termination: 'app-deployment/8-networking.md'
     - Scaling your containers: 'app-deployment/9-scaling.md'
+    - Challenge & practice!: 'app-deployment/10-challenge-and-exercise.md'
 
 # Theme Configuration
 theme:
