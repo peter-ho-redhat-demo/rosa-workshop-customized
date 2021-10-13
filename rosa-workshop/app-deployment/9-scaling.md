@@ -8,6 +8,8 @@ We can also define autoscaling based on load to expand past what we defined if n
 
 Go to your OSToy application web application UI, click `Networking`. Under the `Intra-cluster Communication` section, you will see there is one box randomly changing colors. This box displays the randomly generated color sent to the frontend by our microservice along with the pod name that sent it. Since we see only one box that means there is only one microservice pod.
 
+![image](images/09-001.jpg)
+
 ### 1. Confirm number of pods running via CLI
 To confirm that we only have one pod running for our microservice, run the following command (or use the OpenShift web UI).
 
@@ -27,16 +29,24 @@ Now, we want to ostoy-microservice (note: NOT the frontend) to be scaled out to 
 
 	oc scale deployment ostoy-microservice --replicas=3
 
-Back to your OpenShift web console, on the Developer view, click the `ostoy-microservice` application circle. Confirm that there are now 3 pods. You can also run `oc get pods` again in CLI to confirm the change.
+Back to your OpenShift web console, on the Developer view and the Topology page, click the `ostoy-microservice` application circle. Confirm that there are now 3 pods. You can also run `oc get pods` again in CLI to confirm the change.
+
+![image](images/09-002.jpg)
 
 Now, to see this visually, go back to the OSToy application, click `Netoworking`, under the `Intra-cluster Communication` section, you will see there are 3 boxes randomly changing colors. 
+
+![image](images/09-003.jpg)
 
 ### 3. Scale down via web UI
 Let's use the web UI to scale back down to one pod.
 
-Back to the OpenShift web console, in the Developer view, click the `ostoy-microservice` application circle. On the right hand side, click `Details`, and then click the `down arrow` to scale the number of pods to 1.
+Back to the OpenShift web console, in the Developer view, Topology page, click the `ostoy-microservice` application circle. On the right hand side, click `Details`, and then click the `down arrow` to scale the number of pods to 1.
+
+![image](images/09-004.jpg)
 
 Now, to see this visually, go back to the OSToy application, click `Netoworking`, under the `Intra-cluster Communication` section, you will see there are 1 box randomly changing colors. 
+
+![image](images/09-005.jpg)
 
 ## Autoscaling
 
@@ -52,12 +62,18 @@ We can create the HPA object using OpenShift web console, via CLI, or via YAML d
 
 Back to your OpenShift web console, in the Developer view, click the `ostoy-microservice` application circle. On the right hand side, click `Actions`, then click `Add HorizontalPodAutoscaler`
 
+![image](images/09-006.jpg)
+
 Input the followings:
 
 - Name: `ostoy-microservice-hpa`
 - Minimum pods: `1`
 - Maximum pods: `10`
 - CPU Utilization: `80`
+
+Click `Save`.
+
+![image](images/09-007.jpg)
 
 Roughly speaking, the HPA will increase and decrease the number of replicas (via the deployment) to maintain an average CPU utilization across all Pods of 80% (since we have set each pod requests 50 millicores in the orginal YAML definition, this means average CPU usage of 40 millicores).
 
@@ -79,6 +95,8 @@ or visually in our application:
 
 Now that we know that we only have one pod let's increase the workload that the pod needs to perform. Click the link in the center of the card that says "increase the load".  <u>**Please click only *ONCE*!!!!**</u>
 
+![image](images/09-008.jpg)
+
 This will generate some CPU intensive calculations.  (If you are curious about what it is doing you can click [here](https://github.com/openshift-cs/ostoy/blob/master/microservice/app.js#L32)).
 
 > **Note: The page may become slightly unresponsive.  This is normal; so be patient while the new pods spin up.**
@@ -88,5 +106,7 @@ This will generate some CPU intensive calculations.  (If you are curious about w
 After about a minute the new pods will show up on the page (represented by the colored rectangles). Confirm that the pods did indeed scale up through the OpenShift Web Console or the CLI.
 
 > **Note: The page may still lag a bit which is normal.**
+
+![image](images/09-009.jpg)
 
 Congrats! You have scaled your application manually or automatically via HPA configuration.
