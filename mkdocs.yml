@@ -26,7 +26,7 @@ nav:
     - Setting up health probe: 'app-deployment/5-health-check.md'
     - Mount AWS EBS storage to app: 'app-deployment/6-storage.md'
     - Inject appliation configs: 'app-deployment/7-inject-configs.md'
-    - Networking: 'app-deployment/8-networking.md'
+    - Networking & enable HTTPS: 'app-deployment/8-networking.md'
     - Scaling: 'app-deployment/12-scaling.md'
     - Logging: 'app-deployment/9-logging.md'
 
