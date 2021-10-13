@@ -6,23 +6,25 @@ In this section, we will directly deploy a sample Spring Boot application, witho
 
 Click the arrow icon down below the top-left OpenShift logo in your OpenShift web console, then select `Developer` to view the console in a developer-focused view.
 
-    ![image1](images/01-001.jpg)
+![image](images/01-001.jpg)
 
 Right next to the `Developer` view button, click the `Project` button arrow, then click `Create Project`.
 
-    ![image2](images/01-002.jpg)
+![image](images/01-002.jpg)
 
 In the name field, please enter:
 
     <your-userid>-helloworld
     
-For example, if your user ID given is `user1`, then please enter `user1-helloworld`.
+For example, if your user ID given is `user1`, then please enter `user1-helloworld`. And then click `Create`.
 
-> <b>WARNING: Please replace \<your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.</b>
+> <b>WARNING: Please replace <your-user-id\> with the user ID given by your instructor. DO NOT user other names to prevent naming conflict with other participants.</b>
 
 ### 2. Deploy a sample Spring Boot app
 
 Click the `+ Add` button.
+
+![image](images/01-003.jpg)
 
 In this page, you can deploy applications using different methods, for example
 
@@ -34,6 +36,8 @@ In this page, you can deploy applications using different methods, for example
 
 Down below, click "From Git" button, and enter the followings:
 
+![image](images/01-004.jpg)
+
 - Git Repo URL: `https://github.com/spring-projects/spring-petclinic`
 - Builder Image version: `openjdk-11-el7`
 - Name: `spring-petclinic`
@@ -44,7 +48,7 @@ When done, click `Create` button.
 
 It will trigger an OpenShift S2I image build process. In short, it does the followings:
 
-1. Start a builder pod (i.e. container) inside OpenShift
+1. Start a builder pod (a pod is a group of containers, but usally it is a single container. Pod is a Kubernetes term) inside OpenShift
 2. Clone the Git repo into the builder pod
 3. Use the `openjdk-11-el7` as the base image, inject the Git code into the base image
 4. S2I automatically detected it is a Java Spring Boot app with a pom.xml file, then will will follow the normal procedure to run maven build and execute the app.
@@ -60,7 +64,11 @@ Now, back to the Developer view. (Hint: You may check the `Topology` button on t
 
 Click the little icon at the <b><u>bottom-left</u></b> of your application logo. This will send you to view the S2I build pod logs.
 
+![image](images/01-005.jpg)
+
 You will see a black logging screen. Depending on how fast your work is, it will either shows `Push successful` at the end of the logs, or still processing.
+
+![image](images/01-006.jpg)
 
 Click the `Topology` button on the left to go back to the Developer view.
 
