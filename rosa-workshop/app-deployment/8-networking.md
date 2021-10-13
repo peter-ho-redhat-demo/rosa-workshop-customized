@@ -18,13 +18,19 @@ Click the `Add to navigtion` on the right to make the shortcut available on the 
 
 Right now, there is an existing Route object created (which was created when we apply YAMLs few labs back). Click to `vertical ...` icon right next to the Route row. Click `Delete Route`.
 
+![image](images/08-001.jpg)
+
 Confirm the deletion.
 
 Try to access your OSToy application again using the URL that we have previously. You should now NOT able to enter the app because we have deleted the entrace.
 
+![image](images/08-002.jpg)
+
 ### 2. Create a new OpenShift Route with TLS termination
 
 Now, we are going to add the entrace back, but with TLS termination. Back to the OpenShift web console, under the Route page, click `Create Route` button.
+
+![image](images/08-003.jpg)
 
 Input the followings:
 
@@ -32,7 +38,7 @@ Input the followings:
 - Service: `ostoy-frontend-svc` (make sure you don't select the wrong one)
 - Target port: `8080 -> ostoy-port (TCP)`
 - Security: Check the `Secure Route` box
-- TLS termination: Edge
+- TLS termination: `Edge`
 
 Then click `Create` button.
 
@@ -42,6 +48,10 @@ Once created, you will notice that you will be redirected to the Route object pa
 
 Click the URL.
 
+![image](images/08-004.jpg)
+
 Notice that you are accessing the webpage via HTTPS. You can confirm that by looking at the lock icon in your brower's address bar.
+
+![image](images/08-005.jpg)
 
 Congrats! Now your application is secured and prevent man-in-the-middle attack using TLS communication encryption!
