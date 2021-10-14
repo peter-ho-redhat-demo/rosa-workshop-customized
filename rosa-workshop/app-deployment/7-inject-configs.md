@@ -68,18 +68,18 @@ Click `Environment`. Here, you will be able to configure environment variables t
 
 Let's add some environment variables. In the `Single values (env)` section, add the first variable:
 
-- Key: TESTING_VARIABLE_1
-- Value: Hello
+- Key: `TESTING_VARIABLE_1`
+- Value: `Hello`
 
 Add another one (by clicling `Add more`):
 
-- Key: TESTING_VARIABLE_2
-- Value: World
+- Key: `TESTING_VARIABLE_2`
+- Value: `World`
 
 Add another one (by clicking `Add more`):
 
-- Key: MICROSERVICE_NAME
-- Value: OSTOY_MICROSERVICE_SVC
+- Key: `MICROSERVICE_NAME`
+- Value: `OSTOY_MICROSERVICE_SVC`
 
 > **Important: Make sure you set the MICROSERVICE_NAME environment variable, as we will use it later.**
 
