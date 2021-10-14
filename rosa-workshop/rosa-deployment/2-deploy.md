@@ -46,15 +46,15 @@ You will see an output like the following:
 
 
 ### Create the cluster
-Run the following command to create a cluster with all the default options (except that we specify the ROSA cluster should be deployed in multiple availabilty zones and with 3 compute worker nodes spread across zones). For the cluster name, <b><u>you must use the cluster name that was given by the workshop instructor (the AWS account is shared across multiple participants, please use the name we provide to avoid naming conflict)</u></b>.
+Run the following command to create a cluster with all the default options (except that we specify the ROSA cluster should be deployed in multiple availabilty zones and with 3 compute worker nodes spread across zones). For the cluster name, <b><u>you must change the cluster name to include the User ID that was given by the workshop instructor (the AWS account we use today is shared across multiple participants, please use the name we provide to avoid naming conflict)</u></b>.
 
-    rosa create cluster --cluster-name <cluster name> --multi-az --compute-nodes 3 --sts
+    rosa create cluster --cluster-name <your-user-id>-rosa --multi-az --compute-nodes 3 --sts
 
 >**Note:** If you want to see all available options for your cluster use the `--help` flag or for interactive mode you can use `--interactive`
 
 For example: 
 
-    $ rosa create cluster --cluster-name my-rosa-cluster --multi-az --compute-nodes 3 --sts
+    $ rosa create cluster --cluster-name user1-rosa --multi-az --compute-nodes 3 --sts
 
 You should see a response like the following:
 

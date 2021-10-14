@@ -2,13 +2,9 @@
 
 To delete a ROSA cluster follow the steps below.
 
-1. If you need to list your clusters in order to make sure you are deleting the correct one run
+1. Run the following:
 
-		rosa list clusters
-
-1. Once you know which one to delete run
-
-		rosa delete cluster --cluster=<clustername>
+		rosa delete cluster --cluster=<your-user-id>-rosa
 
 1. It will prompt you to confirm that you want to delete it. Press “y” then enter. The cluster will be deleted and all its associated infrastructure. **THIS IS NON-RECOVERABLE.**
 
@@ -24,9 +20,3 @@ To delete a ROSA cluster follow the steps below.
 	![mp](images/12-del_cr.png)
 
 1. The remaining roles would be account-scoped and should only be removed if they are <u>no longer needed by other clusters in the same account</u>. To delete these search for "ManangedOpenShift" or your specified prefix (if specified).
-
-
-*[ROSA]: Red Hat OpenShift Service on AWS
-*[IdP]: Identity Provider
-*[OCM]: OpenShift Cluster Manager
-*[STS]: AWS Secure Token Service

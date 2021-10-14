@@ -7,12 +7,13 @@ site_author: Red Hat
 nav:
   - Home: index.md
   - Part 1 - ROSA cluster deployment:
-    - Setup: 'rosa-deployment/1-account_setup.md'
-    - Deploy the cluster: 'rosa-deployment/2-deploy.md'
-    - Create an admin user: 'rosa-deployment/3-create_initial_admin.md'
-    - Accessing your cluster: 'rosa-deployment/6-access_cluster.md'
-    - Managing worker nodes: 'rosa-deployment/7-managing_nodes.md'
-    - Autoscaling: 'rosa-deployment/8-autoscaling.md'
+    - Prerequisites setup: 'rosa-deployment/1-account-setup.md'
+    - Deploy the ROSA cluster: 'rosa-deployment/2-deploy.md'
+    - Create admin account and access: 'rosa-deployment/3-create-admin-and-access.md'
+    - Delete the ROSA cluster: 'rosa-deployment/4-delete-cluster.md'
+    - Extra - Managing nodes: 'rosa-deployment/extra-1-managing-nodes.md'
+    - Extra - Cluster autoscaling: 'rosa-deployment/extra-2-autoscaling.md'
+    - Extra - Cluster upgrade: 'rosa-deployment/extra-3-upgrade.md'
   - Part 2 - Application deployment:
     - Deploying hello world app: 'app-deployment/1-deploy-hello-world-using-s2i.md'
     - Deploying sample database: 'app-deployment/2-deploy-sample-db.md'
