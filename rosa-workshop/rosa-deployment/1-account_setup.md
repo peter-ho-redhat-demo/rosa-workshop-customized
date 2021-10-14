@@ -1,11 +1,11 @@
-There are currently two supported methods for creating a ROSA cluster. One method uses IAM with the *AdministratorAccess* policy (only for the account using ROSA).  The other, more recent version, uses AWS Secure Token Service (STS) for the ROSA cluster components. AWS STS is a global web service that allows the creation of temporary credentials for IAM users or federated users. ROSA uses this to assign IAM roles short-term, limited-privilege, security credentials. These credentials are associated with IAM roles that are specific to each component that makes AWS API calls. This better aligns with principals of least privilege and is much better aligned to secure practices in cloud service resource management. In this workshop, we will be using the STS method.
+There are currently two supported methods for creating a ROSA cluster. One method uses IAM with the *AdministratorAccess* policy (only for the account using ROSA).  The other, more recent version, uses AWS Secure Token Service (STS) for the ROSA cluster components. AWS STS is a global web service that allows the creation of temporary credentials for IAM users or federated users. ROSA uses this to assign IAM rolesP short-term, limited-privilege, security credentials. These credentials are associated with IAM roles that are specific to each component that makes AWS API calls. This better aligns with principals of least privilege and is much better aligned to secure practices in cloud service resource management. In this workshop, we will be using the STS method.
 
 ## Prerequisites
 
 Please read through the followings. To save your time, most of the preprequistes have been prepared by our team for you to conduct this hands-on exercise. In case you are really interested, you can find more details in the ROSA documentation at [Prerequisites for ROSA w/STS](https://docs.openshift.com/rosa/rosa_getting_started_sts/rosa-sts-aws-prereqs.html).
 
 ### AWS Credentials
-You will need the following pieces of information from your AWS account **(All of the below items have already been prepared by us. Thus, you don't have to do anything)**:
+You will need the following pieces of information from your AWS account **(All of the below items have already been prepared by us. Thus, you don't have to do anythinzzzg)**:
 
 - AWS IAM User
 - AWS Access Key ID
@@ -53,11 +53,13 @@ Complete this step if you have *not* enabled ROSA in your AWS account (for the s
 ### Configure the AWS CLI
 Although the AWS CLI is already installed in your web-based terminal, it has NOT been configured to use any AWS account. **Please follow these steps in the terminal**:
 
-1. Enter `aws configure` in the terminal
-2. Enter the AWS Access Key ID and press enter
-3. Enter the AWS Secret Access Key and press enter
-4. Enter the region (**please use `ap-southeast-1`**, which is Singapore) you want to deploy into (you may want to deploy the ROSA in other regions like Hong Kong `ap-east-1`, technically it is feasible as ROSA is available in Hong Kong. *However, please DO NOT try to use other regions unless the instructor say so, as we did not setup enough AWS quota resources in other AWS regions*)
-5. Enter the output format you want (“table” or “json”).  For this guide you can choose “table” as it is easier to read but either is fine.
+1. Enter `echo $AWS_ACCESS_KEY` in the terminal to get the AWS Access Key ID that we provide
+2. Enter `echo $AWS_SECRET_KET` in ther terminal to get the AWS Secret Access Key that we provide
+3. Enter `aws configure` in the terminal
+4. Enter the AWS Access Key ID and press enter
+5. Enter the AWS Secret Access Key and press enter
+6. Enter the region (**please use `ap-southeast-1`**, which is Singapore) you want to deploy into (you may want to deploy the ROSA in other regions like Hong Kong `ap-east-1`, technically it is feasible as ROSA is available in Hong Kong. *However, please DO NOT try to use other regions unless the instructor say so, as we did not setup enough AWS quota resources in other AWS regions*)
+7. Enter the output format you want (“table” or “json”).  For this guide you can choose “table” as it is easier to read but either is fine.
 
 ### Verify the AWS CLI configuration
 Verify that the configuration is correct.
