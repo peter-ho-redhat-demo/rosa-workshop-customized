@@ -6,7 +6,7 @@ site_author: Red Hat
 # Nav Menu Definition
 nav:
   - Home: index.md
-  - Access your lab environment: accessing-the-lab-toolbox-environment
+  - Access your lab environment: accessing-the-lab-toolbox-environment.md
   - Part 1 - ROSA cluster deployment:
     - Prerequisites setup: 'rosa-deployment/1-account-setup.md'
     - Deploy the ROSA cluster: 'rosa-deployment/2-deploy.md'
