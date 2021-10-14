@@ -54,7 +54,7 @@ Complete this step if you have *not* enabled ROSA in your AWS account (for the s
 Although the AWS CLI is already installed in your web-based terminal, it has NOT been configured to use any AWS account. **Please follow these steps in the terminal**:
 
 1. Enter `echo $AWS_ACCESS_KEY` in the terminal to get the AWS Access Key ID that we provide
-2. Enter `echo $AWS_SECRET_KET` in ther terminal to get the AWS Secret Access Key that we provide
+2. Enter `echo $AWS_SECRET_KEY` in the terminal to get the AWS Secret Access Key that we provide
 3. Enter `aws configure` in the terminal
 4. Enter the AWS Access Key ID and press enter
 5. Enter the AWS Secret Access Key and press enter
@@ -81,7 +81,7 @@ Verify that the configuration is correct.
 
 
 ### Log into your Red Hat account
-1. Enter `echo $ROSA_INSTALL_TOKEN` in the terminal. We have injected our Red Hat account's token into your terminal environment, so that you don't need to create your own Red Hat account. (Note: **Please DO NOT use your own Red Hat account foor this workshop, as we cannot help you to manage the lifecycle of the cluster in the workashop. Use the token we provide.**)
+1. Enter `echo $ROSA_INSTALL_TOKEN` in the terminal. We have injected our Red Hat account's token into your terminal environment, so that you don't need to create your own Red Hat account. (Note: **Please DO NOT use your own Red Hat account for this workshop, as we cannot help you to manage the lifecycle of the cluster in the workashop if you use your own. Use the token that we provide.**)
 2. Enter `rosa login` in a terminal.
 3. It will prompt you to open a web browser, you don't have to do that because we already have the token in your environment.
 4. Copy the token echoed above and paste it back into the CLI prompt and press enter.  

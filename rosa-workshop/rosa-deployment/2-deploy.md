@@ -22,7 +22,7 @@ For each succeeding cluster in the same account for the same version, only steps
 ## Automatic Mode
 As mentioned above if you want the ROSA CLI to automate the creation of the roles and policies to create your cluster quickly, then use this method.
 
-### Create account roles (JUST READ this section, we have done this for you already)
+### Create account roles (**JUST READ this section, we have done this for you already**)
 If this is the <u>first time</u> you are deploying ROSA in this account and have <u>not yet created the account roles</u> for the OpenShift version you are deploying, then enable ROSA to create JSON files for account-wide roles and policies, including Operator policies. 
 
 Run the following command (to see all available OpenShift versions available run: `rosa list versions`):
@@ -108,17 +108,17 @@ The default settings does not use multiple availability zones on AWS. If you do 
 ### Create operator roles
 These roles need to be created <u>once per cluster</u>. To create the roles run the following:
 
-    rosa create operator-roles --mode auto --cluster <cluster-name> --yes
+    rosa create operator-roles --mode auto --cluster <your-user-id>-rosa --yes
 
 ### Create the OIDC provider
 Run the following to create the OIDC provider:
 
-    rosa create oidc-provider --mode auto --cluster <cluster-name> --yes
+    rosa create oidc-provider --mode auto --cluster <your-user-id>-rosa --yes
 
 ### Check installation status
 1. You can run the following command to check the status of the cluster for a detailed view:
 
-        rosa describe cluster --cluster <cluster-name>
+        rosa describe cluster --cluster <your-user-id>-rosa
 
     or you can also run the following for an abridged view of the status (since the AWS account that we give are shared by many participants, you will likely see other people's ROSA cluster when you run the command below):
 
@@ -128,6 +128,6 @@ Run the following to create the OIDC provider:
     
 1. You can also rack the progress of the cluster creation by watching the OpenShift installer logs:
 
-        rosa logs install --cluster <cluster_name> --watch
+        rosa logs install --cluster <your-user-id>-rosa --watch
 
 1. Once the state has changed to “Ready” your cluster is now installed.  

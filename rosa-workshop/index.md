@@ -15,7 +15,7 @@ If you'd like a preview of the cluster deployment process, you can watch a short
     * <https://www.openshift.com/products/amazon-openshift>
     * <https://aws.amazon.com/rosa/>
     * <https://access.redhat.com/products/red-hat-openshift-service-aws>
-* ROSA Documentation
+* ROSA Documentation:
     - [Product documentation](https://docs.openshift.com/rosa/welcome/index.html)
 	- [Service Definition](https://docs.openshift.com/rosa/rosa_policy/rosa-service-definition.html)
     - [Responsibility Assignment Matrix](https://docs.openshift.com/rosa/rosa_policy/rosa-policy-responsibility-matrix.html)
