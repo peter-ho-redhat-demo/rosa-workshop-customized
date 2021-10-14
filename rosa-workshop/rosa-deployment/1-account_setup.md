@@ -2,10 +2,10 @@ There are currently two supported methods for creating a ROSA cluster. One metho
 
 ## Prerequisites
 
-Please read through the followings. To save your time, most of the preprequistes have been prepared by Red Hat team for you to conduct this hands-on exercise. In case you are really interested, you can find more details in the ROSA documentation at [Prerequisites for ROSA w/STS](https://docs.openshift.com/rosa/rosa_getting_started_sts/rosa-sts-aws-prereqs.html).
+Please read through the followings. To save your time, most of the preprequistes have been prepared by our team for you to conduct this hands-on exercise. In case you are really interested, you can find more details in the ROSA documentation at [Prerequisites for ROSA w/STS](https://docs.openshift.com/rosa/rosa_getting_started_sts/rosa-sts-aws-prereqs.html).
 
 ### AWS Credentials
-You will need the following pieces of information from your AWS account (All of the below items have already been prepared by Red Hat. Thus, you don't have to do anything):
+You will need the following pieces of information from your AWS account **(All of the below items have already been prepared by us. Thus, you don't have to do anything)**:
 
 - AWS IAM User
 - AWS Access Key ID
@@ -13,13 +13,13 @@ You will need the following pieces of information from your AWS account (All of 
 - AWS Account with sufficient resource quota
 
 ### Red Hat Account
-To create a ROSA cluster, you must have a Red Hat account to register your ROSA cluster into Red Hat's cloud console. If you do not have a Red Hat account, create one here <https://console.redhat.com/>. Accept the required terms and conditions. Then check your email for a verification link.
+To create a ROSA cluster, you must have a Red Hat account to register your ROSA cluster into Red Hat's cloud console. In this workshop, we will be providing you the Red Hat account with a token that is ready for ROSA creation. Thus, **you don't need to create an account for today's workshop**. However, if you are interested, create one here <https://console.redhat.com/>. Accept the required terms and conditions. Then check your email for a verification link.
 
 ### Install the AWS CLI
-AWS CLI will be used for logging into your assigned AWS account. The AWS account has already been created by Red Hat team. Each participant will be given a web-based terminal, which has all the necessary CLI tools being installed (including the AWS CLI). Thus, you don't have to install AWS CLI on your own laptop. However, if you are interested, please check out the [Install the AWS CLI](https://aws.amazon.com/cli/) documentation.
+AWS CLI will be used for logging into your assigned AWS account. The AWS account has already been created by our team. Each participant will be given a web-based terminal, which has all the necessary CLI tools being installed (including the AWS CLI). Thus, **you don't have to install AWS CLI on your own laptop**. However, if you are interested, please check out the [Install the AWS CLI](https://aws.amazon.com/cli/) documentation.
 
 ### Install the ROSA CLI
-AWS CLI itself cannot create a ROSA cluster. Instead, ROSA CLI will be used for cluster creation and management. Just like what has been mentioned, all the necessary CLI tools being installed (including the ROSA CLI). Thus, you don't have to install ROSA CLI on your own laptop. 
+AWS CLI itself cannot create a ROSA cluster. Instead, ROSA CLI will be used for cluster creation and management. Just like what has been mentioned, all the necessary CLI tools being installed (including the ROSA CLI). Thus, **you don't have to install ROSA CLI on your own laptop**. 
 
 However, if you are interested, please check out the [ROSA CLI](https://www.openshift.com/products/amazon-openshift/download) page to download. Here are some steps to install ROSA CLI.
 - Install the ROSA CLI as per your operating system. 
@@ -27,7 +27,7 @@ However, if you are interested, please check out the [ROSA CLI](https://www.open
 - Run `rosa version` to make sure it works and that it returns the version number.
 
 ### Install the OpenShift CLI
-Again, the web-based terminal that Red Hat provides has all the necessary CLI tools being installed (including the OpenShift CLI). Thus, you don't have to install OpenShift CLI on your own laptop. However, if you are interested to learn how to install. There are a few ways to install the `oc` CLI:
+Again, **the web-based terminal that we provide today has all the necessary CLI tools being installed (including the OpenShift CLI)**. Thus, you don't have to install OpenShift CLI on your own laptop. However, if you are interested to learn how to install. There are a few ways to install the `oc` CLI:
 
 - If you have the `rosa` CLI installed, the simplest way is to run `rosa download oc`. Once downloaded, move the executable into a directory in your PATH
 - You can [download and install](https://docs.openshift.com/container-platform/4.8/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli) the latest OpenShift CLI (oc).  
@@ -39,7 +39,7 @@ Again, the web-based terminal that Red Hat provides has all the necessary CLI to
 Being Kubernetes, one can definitely use `kubectl` with their OpenShift cluster.  `oc` is specific to OpenShift in that it includes the standard set of features from `kubectl` plus additional support for OpenShift functionality.  See [Usage of oc and kubectl commands](https://docs.openshift.com/container-platform/4.8/cli_reference/openshift_cli/usage-oc-kubectl.html) for more details.
 
 ### Enable ROSA
-Complete this step if you have *not* enabled ROSA in your AWS account (for the sake of time, we have already enabled the ROSA service in the AWS accounts that Red Hat provides):
+Complete this step if you have *not* enabled ROSA in your AWS account (for the sake of time, **we have already enabled the ROSA service in the AWS accounts that we provide**):
 
 - Visit <https://console.aws.amazon.com/rosa> to enable your account to use ROSA.
 - Click on the orange "Enable OpenShift" button on the right.
@@ -51,12 +51,12 @@ Complete this step if you have *not* enabled ROSA in your AWS account (for the s
     ![Enabled](images/1-enabled.png)
 
 ### Configure the AWS CLI
-Although the AWS CLI is already installed in your web-based terminal, it has NOT been configured to use any AWS account. Please follow these steps in the terminal:
+Although the AWS CLI is already installed in your web-based terminal, it has NOT been configured to use any AWS account. **Please follow these steps in the terminal**:
 
 1. Enter `aws configure` in the terminal
 2. Enter the AWS Access Key ID and press enter
 3. Enter the AWS Secret Access Key and press enter
-4. Enter the region (please use `ap-southeast-1`, which is Singapore) you want to deploy into (you may want to deploy the ROSA in other regions like Hong Kong `ap-east-1`, technically it is feasible as ROSA is available in Hong Kong. *However, please DO NOT try to use other regions unless the instructor say so, as we did not setup enough AWS quota resources in other AWS regions*)
+4. Enter the region (**please use `ap-southeast-1`**, which is Singapore) you want to deploy into (you may want to deploy the ROSA in other regions like Hong Kong `ap-east-1`, technically it is feasible as ROSA is available in Hong Kong. *However, please DO NOT try to use other regions unless the instructor say so, as we did not setup enough AWS quota resources in other AWS regions*)
 5. Enter the output format you want (“table” or “json”).  For this guide you can choose “table” as it is easier to read but either is fine.
 
 ### Verify the AWS CLI configuration
@@ -79,16 +79,10 @@ Verify that the configuration is correct.
 
 
 ### Log into your Red Hat account
-1. Enter `rosa login` in a terminal.
-2. It will prompt you to open a web browser and go to:
-
-    <https://console.redhat.com/openshift/token/rosa>
-
-3. If you are asked to log in, then please use your own Red Hat account to login.
-4. Click on the "Load token" button. 
-5. Copy the token and paste it back into the CLI prompt and press enter.  You can also just copy the full `rosa login --token=abc...` command and paste that in the terminal.
-
-    ![CLI Tools](images/1-token.png)
+1. Enter `echo $ROSA_INSTALL_TOKEN` in the terminal. We have injected our Red Hat account's token into your terminal environment, so that you don't need to create your own Red Hat account. (Note: **Please DO NOT use your own Red Hat account foor this workshop, as we cannot help you to manage the lifecycle of the cluster in the workashop. Use the token we provide.**)
+2. Enter `rosa login` in a terminal.
+3. It will prompt you to open a web browser, you don't have to do that because we already have the token in your environment.
+4. Copy the token echoed above and paste it back into the CLI prompt and press enter.  
 
 ### Verify Red Hat login and AWS account credentials
 Verify that all the credentials set up are correctly. 
