@@ -9,7 +9,7 @@ nav:
   - Part 1 - ROSA cluster deployment:
     - Prerequisites setup: 'rosa-deployment/1-account-setup.md'
     - Deploy the ROSA cluster: 'rosa-deployment/2-deploy.md'
-    - Create admin account and access: 'rosa-deployment/3-create-admin-and-access.md'
+    - Create admin and access: 'rosa-deployment/3-create-admin-and-access.md'
     - Delete the ROSA cluster: 'rosa-deployment/4-delete-cluster.md'
     - Extra - Managing nodes: 'rosa-deployment/extra-1-managing-nodes.md'
     - Extra - Cluster autoscaling: 'rosa-deployment/extra-2-autoscaling.md'
