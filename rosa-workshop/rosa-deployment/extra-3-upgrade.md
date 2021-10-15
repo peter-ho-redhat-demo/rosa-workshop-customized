@@ -1,4 +1,6 @@
-## Upgrading the cluster
+## Bonus chapter - Upgrading the cluster
+
+> These are Bouns chapter, we do not intent to complete these during the workshop. However, feel free to read these for your own information :)
 
 There are 3 ways to upgrade your cluster.
 

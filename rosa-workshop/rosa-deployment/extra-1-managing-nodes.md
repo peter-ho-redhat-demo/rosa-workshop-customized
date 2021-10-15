@@ -1,4 +1,6 @@
-## Managing Worker Nodes
+## Bouns chapter - Managing Worker Nodes
+
+> These are Bouns chapter, we do not intent to complete these during the workshop. However, feel free to read these for your own information :)
 
 When using your cluster there may be times when you need to change aspects of your worker nodes. Things like scaling, changing the type, adding labels or taints to name a few. Most of these things are done through the use of machine pools in ROSA. Think of a machine pool as a “template” for the kinds of machines that make up the worker nodes of your cluster. A machine pool allows users to manage many machines as a single entity. If you'd like to learn more see [About machine pools and autoscaling](https://docs.openshift.com/rosa/nodes/nodes/nodes-machinepools-autoscaling-about.html).
 

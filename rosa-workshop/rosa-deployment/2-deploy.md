@@ -10,7 +10,7 @@ Valid options for `--mode` are:
 In this workshop, we will be using the automatic mode as that is quicker and has less steps.
 
 ## Deployment flow
-The overall ROSA deployment flow that we will follow boils down to 4 (but really 3) steps.
+The overall ROSA deployment flow that we will follow boils down to 4 (but really 3) steps. **(Please read the following first, do NOT need to run those 4 commands below.)**
 
 1. `rosa create account-roles` - This is executed only <u>once</u> per account, per OpenShift version. Once created, this does *not* need to be executed again for more clusters of the same version. <u>We will NOT be running this command as we have ran this command in your AWS account before we start this workshop.</u>. This is just for your information.
 1. `rosa create cluster`

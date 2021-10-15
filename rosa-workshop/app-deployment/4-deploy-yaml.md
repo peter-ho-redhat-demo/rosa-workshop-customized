@@ -19,7 +19,7 @@ Click `Display Token`.
 Copy the command under where it says "Log in with this token". Then go to your terminal that was given and paste that command and press enter.
 
 ### 2. Create new project
-Create a new project in your cluster by entering the following command:
+Create a new project in your cluster by entering the following command **(please use the toolbox terminal that we provided in the workshop, NOT the MySQL terminal that we just opened in our previous lab)**:
 
     oc new-project <your-user-id>-ostoy
 

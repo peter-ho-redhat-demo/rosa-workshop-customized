@@ -1,4 +1,6 @@
-## Autoscaling
+## Bonus chapter - Autoscaling
+
+> These are Bouns chapter, we do not intent to complete these during the workshop. However, feel free to read these for your own information :)
 
 Autoscaling can refer to two things in the world of Kubernetes.  Either:
 
